@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <script type="module">
+
+        document.documentElement.lang = "en";
+        document.title = "Login";
+
+        // Adicionando elementos no <head>
+        const head = document.head;
+
+        // Meta tags
+        const metaCharset = document.createElement("meta");
+        metaCharset.setAttribute("charset", "utf-8");
+
+        const metaCompat = document.createElement("meta");
+        metaCompat.setAttribute("http-equiv", "X-UA-Compatible");
+        metaCompat.setAttribute("content", "IE=edge");
+
+        const metaViewport = document.createElement("meta");
+        metaViewport.setAttribute("name", "viewport");
+        metaViewport.setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no");
+
+        const metaDescription = document.createElement("meta");
+        metaDescription.setAttribute("name", "description");
+        metaDescription.setAttribute("content", "");
+
+        const metaAuthor = document.createElement("meta");
+        metaAuthor.setAttribute("name", "author");
+        metaAuthor.setAttribute("content", "");
+
+        // Favicon
+        const favicon = document.createElement("link");
+        favicon.setAttribute("rel", "shortcut icon");
+        favicon.setAttribute("href", "img/borb.ico");
+        favicon.setAttribute("type", "image/x-icon");
+
+        // CSS links
+        const fontAwesome = document.createElement("link");
+        fontAwesome.setAttribute("href", "vendor/fontawesome-free/css/all.min.css");
+        fontAwesome.setAttribute("rel", "stylesheet");
+        fontAwesome.setAttribute("type", "text/css");
+
+        const googleFonts = document.createElement("link");
+        googleFonts.setAttribute("href", "https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i");
+        googleFonts.setAttribute("rel", "stylesheet");
+
+        const customCss = document.createElement("link");
+        customCss.setAttribute("href", "css/sb-admin-2.min.css");
+        customCss.setAttribute("rel", "stylesheet");
+
+        // Adicionando os elementos ao head
+        head.append(metaCharset, metaCompat, metaViewport, metaDescription, metaAuthor, favicon, fontAwesome, googleFonts, customCss);
+
+        // Estilo em linha
+        const style = document.createElement("style");
+        style.textContent = `
+  .bg-login-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+  }
+  .bg-login-image img {
+      display: block;
+      margin: 0 auto;
+      width: 390px;    
+      height: 550px;
+      margin-right: 35px;
+      padding: 10px;
+      border-radius: 10px;
+  }
+  .col-lg-6 {
+      height: 580px;
+      padding: 10px;
+  }
+  .text-center, .small {
+      font-size: 15px;
+  }
+  .container {
+      align-items: center;
+      justify-content: center;
+  }
+`;
+        head.appendChild(style);
+
+        // Corpo do documento
+        document.body.className = "bg-gradient-primary";
+
+        const container = document.createElement("div");
+        container.className = "container";
+
+        const row = document.createElement("div");
+        row.className = "row justify-content-center";
+
+        const col = document.createElement("div");
+        col.className = "col-xl-10 col-lg-12 col-md-9";
+
+        const card = document.createElement("div");
+        card.className = "card o-hidden border-0 shadow-lg my-5";
+
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body p-0";
+
+        const rowInside = document.createElement("div");
+        rowInside.className = "row";
+
+        // Coluna da imagem
+        const colLeft = document.createElement("div");
+        colLeft.className = "col-lg-6 d-none d-lg-block bg-login-image";
+
+        const image = document.createElement("img");
+        image.setAttribute("src", "img/mariaFilipa.png");
+        image.setAttribute("alt", "Imagem");
+
+        colLeft.appendChild(image);
+
+        // Coluna do conteúdo
+        const colRight = document.createElement("div");
+        colRight.className = "col-lg-6";
+
+        const content = document.createElement("div");
+        content.className = "p-5";
+
+        const textCenter = document.createElement("div");
+        textCenter.className = "text-center";
+
+        const heading = document.createElement("h1");
+        heading.className = "h4 text-gray-900 mb-4";
+        heading.textContent = "Bem-vindo de volta administrador!";
+
+        textCenter.appendChild(heading);
+        content.appendChild(textCenter);
+
+        const form = document.createElement("form");
+        form.className = "user";
+
+        const emailGroup = document.createElement("div");
+        emailGroup.className = "form-group";
+
+        const emailInput = document.createElement("input");
+        emailInput.type = "email";
+        emailInput.className = "form-control form-control-user";
+        emailInput.id = "exampleInputEmail";
+        emailInput.placeholder = "Digite o endereço de e-mail...";
+
+        emailGroup.appendChild(emailInput);
+
+        const passwordGroup = document.createElement("div");
+        passwordGroup.className = "form-group";
+
+        const passwordInput = document.createElement("input");
+        passwordInput.type = "password";
+        passwordInput.className = "form-control form-control-user";
+        passwordInput.id = "exampleInputPassword";
+        passwordInput.placeholder = "Senha";
+
+        passwordGroup.appendChild(passwordInput);
+
+        const checkboxGroup = document.createElement("div");
+        checkboxGroup.className = "form-group";
+
+        const customControl = document.createElement("div");
+        customControl.className = "custom-control custom-checkbox small";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "custom-control-input";
+        checkbox.id = "customCheck";
+
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.className = "custom-control-label";
+        checkboxLabel.setAttribute("for", "customCheck");
+        checkboxLabel.textContent = "lembrar-me";
+
+        customControl.append(checkbox, checkboxLabel);
+        checkboxGroup.appendChild(customControl);
+
+        form.append(emailGroup, passwordGroup, checkboxGroup);
+
+        // Botões
+        const loginButton = document.createElement("a");
+        loginButton.className = "btn btn-primary btn-user btn-block";
+        loginButton.href = "index.html";
+        loginButton.textContent = "Entrar";
+
+        const googleButton = document.createElement("a");
+        googleButton.className = "btn btn-google btn-user btn-block";
+        googleButton.href = "index.html";
+        googleButton.innerHTML = `<i class="fab fa-google fa-fw"></i> Entrar com o Google`;
+
+        const facebookButton = document.createElement("a");
+        facebookButton.className = "btn btn-facebook btn-user btn-block";
+        facebookButton.href = "index.html";
+        facebookButton.innerHTML = `<i class="fab fa-facebook-f fa-fw"></i> Entrar com Facebook`;
+
+        form.append(loginButton, googleButton, facebookButton);
+
+        content.appendChild(form);
+
+        const forgotPassword = document.createElement("div");
+        forgotPassword.className = "text-center";
+
+        const forgotLink = document.createElement("a");
+        forgotLink.className = "small";
+        forgotLink.href = "forgot-password.html";
+        forgotLink.textContent = "Esqueceu a senha?";
+
+        forgotPassword.appendChild(forgotLink);
+
+        const register = document.createElement("div");
+        register.className = "text-center";
+
+        const registerLink = document.createElement("a");
+        registerLink.className = "small";
+        registerLink.href = "register.html";
+        registerLink.textContent = "Criar conta!";
+
+        register.appendChild(registerLink);
+
+        content.append(forgotPassword, register);
+        colRight.appendChild(content);
+
+        rowInside.append(colLeft, colRight);
+        cardBody.appendChild(rowInside);
+        card.appendChild(cardBody);
+        col.appendChild(card);
+        row.appendChild(col);
+        container.appendChild(row);
+        document.body.appendChild(container);
+
+    </script>
+</body>
+
+</html>
